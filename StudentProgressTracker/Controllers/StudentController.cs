@@ -80,11 +80,20 @@ namespace StudentProgressTracker.Controllers
         // POST: StudentController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Student student)
+        public async Task<IActionResult> Edit(int id, StudentDTO student)
         {
             try
             {
-                _studentRepository.UpdateAsync(student);
+                Student studentToUpdate = new Student();
+
+                studentToUpdate.Id = student.Id;
+                studentToUpdate.LastName = student.LastName;
+                studentToUpdate.FirstName = student.FirstName;
+                studentToUpdate.Email = student.Email;
+                studentToUpdate.IdNumber = student.IdNumber;
+                studentToUpdate.ProfileImage = studentToUpdate.ProfileImage;
+
+                _studentRepository.UpdateAsync(studentToUpdate);
                 await _studentRepository.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

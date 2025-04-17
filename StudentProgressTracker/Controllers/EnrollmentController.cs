@@ -35,13 +35,18 @@ namespace StudentProgressTracker.Controllers
                 // Example: check for a specific role
                 bool isViewer = roles.Contains("Viewer");
 
-                return Forbid();
+                if (isViewer)
+                {
+                    return View(enrollments);
+                }
+
+                if (!user.IsAdmin && user.PersonId != null)
+                    return View(enrollments.Where(x => x.StudentId == (user.Person.StudentId ?? 0)).ToList());
             }
 
-            if (!user.IsAdmin && user.PersonId != null)
-                return View(await _enrollmentRepository.GetByStudentIdAsync(user.PersonId ?? 0));
+            var t = enrollments.ToList();
 
-            return View(await _enrollmentRepository.GetAllAsync());
+            return View(t);
         }
 
         // GET: StudentController/Details/5
@@ -73,6 +78,7 @@ namespace StudentProgressTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
         {
+            
             try
             {
                 return RedirectToAction(nameof(Index));
@@ -84,15 +90,25 @@ namespace StudentProgressTracker.Controllers
         }
 
         // GET: StudentController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
+            var user = await _userManager.GetUserAsync(_httpContextAccessor.HttpContext?.User);
+            if (user != null)
+            {
+                var roles = await _userManager.GetRolesAsync(user); // returns List<string>
+
+                // Example: check for a specific role
+                bool isViewer = roles.Contains("Viewer");
+
+                return Forbid();
+            }
             return View();
         }
 
         // POST: StudentController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, Enrollment enrollment)
         {
             try
             {
@@ -105,8 +121,18 @@ namespace StudentProgressTracker.Controllers
         }
 
         // GET: StudentController/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
+            var user = await _userManager.GetUserAsync(_httpContextAccessor.HttpContext?.User);
+            if (user != null)
+            {
+                var roles = await _userManager.GetRolesAsync(user); // returns List<string>
+
+                // Example: check for a specific role
+                bool isViewer = roles.Contains("Viewer");
+
+                return Forbid();
+            }
             return View();
         }
 

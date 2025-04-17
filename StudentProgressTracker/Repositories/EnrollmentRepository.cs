@@ -18,7 +18,7 @@ namespace StudentProgressTracker.Repositories
             await _context.Enrollments.FindAsync(id);
 
         public async Task<IEnumerable<Enrollment>> GetAllAsync() =>
-            await _context.Enrollments.ToListAsync();
+            await _context.Enrollments.Include(x => x.Student).ToListAsync();
 
         public async Task<IEnumerable<Enrollment>> GetByStudentIdAsync(int studentId) =>
             await _context.Enrollments

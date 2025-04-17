@@ -9,7 +9,7 @@ namespace StudentProgressTracker.Data
 
         public static void Seed(this ModelBuilder builder)
         {
-            var pwd = "Password@123";
+            var pwd = "Test@123";
             var passwordHarsher = new PasswordHasher<IdentityUser>();
             // Seed Roles
             builder.Entity<IdentityRole>().HasData(
@@ -50,7 +50,7 @@ namespace StudentProgressTracker.Data
                     EmailConfirmed = true,
                     IsAdmin = true,
                     SecurityStamp = Guid.NewGuid().ToString(),
-                    PasswordHash = "1e9a6b9afd56cf274a1b46367cad2ff478fb6f0e29e5766195848b1482d2"
+                    PasswordHash = "AQAAAAIAAYagAAAAEBlyyP/QKMTOX+rdR2NFODOTEAmtSheGfGn+PS+ZMqeksHcGdFW02yY2iCh5ELBHrQ=="
                 },
                 new ApplicationUser
                 {
@@ -63,7 +63,7 @@ namespace StudentProgressTracker.Data
                     PersonId = 6,
                     IsAdmin = false,
                     SecurityStamp = Guid.NewGuid().ToString(),
-                    PasswordHash = "1e9a6b9afd56cf274a1b46367cad2ff478fb6f0e29e5766195848b1482d2"
+                    PasswordHash = "AQAAAAIAAYagAAAAEBlyyP/QKMTOX+rdR2NFODOTEAmtSheGfGn+PS+ZMqeksHcGdFW02yY2iCh5ELBHrQ=="
                 },
                 new ApplicationUser
                 {
@@ -76,7 +76,7 @@ namespace StudentProgressTracker.Data
                     PersonId = 2,
                     IsAdmin = false,
                     SecurityStamp = Guid.NewGuid().ToString(),
-                    PasswordHash = "cd92953692442115e21ca8c5daefaffe2b3d8737769700667cb8ca864ae1"
+                    PasswordHash = "AQAAAAIAAYagAAAAEBlyyP/QKMTOX+rdR2NFODOTEAmtSheGfGn+PS+ZMqeksHcGdFW02yY2iCh5ELBHrQ=="
                 },
                 new ApplicationUser
                 {
@@ -89,7 +89,7 @@ namespace StudentProgressTracker.Data
                     PersonId = 3,
                     IsAdmin = false,
                     SecurityStamp = Guid.NewGuid().ToString(),
-                    PasswordHash = "8821f0b783db3f50973e537d6c60e6d11b9f54e468f7ad3310d33a7ce5bd"
+                    PasswordHash = "AQAAAAIAAYagAAAAEBlyyP/QKMTOX+rdR2NFODOTEAmtSheGfGn+PS+ZMqeksHcGdFW02yY2iCh5ELBHrQ=="
                 },
                 new ApplicationUser
                 {
@@ -102,7 +102,7 @@ namespace StudentProgressTracker.Data
                     PersonId = 4,
                     IsAdmin = false,
                     SecurityStamp = Guid.NewGuid().ToString(),
-                    PasswordHash = "7d2a607c01865556ee0b41989327f79cf4611f64ad6395b70c8dabce265a"
+                    PasswordHash = "AQAAAAIAAYagAAAAEBlyyP/QKMTOX+rdR2NFODOTEAmtSheGfGn+PS+ZMqeksHcGdFW02yY2iCh5ELBHrQ=="
                 },
                 new ApplicationUser
                 {
@@ -115,7 +115,7 @@ namespace StudentProgressTracker.Data
                     PersonId = 5,
                     IsAdmin = false,
                     SecurityStamp = Guid.NewGuid().ToString(),
-                    PasswordHash = "1d822bf156637662c4dea432bf14e9a91395f395c81695069253c512665f"
+                    PasswordHash = "AQAAAAIAAYagAAAAEBlyyP/QKMTOX+rdR2NFODOTEAmtSheGfGn+PS+ZMqeksHcGdFW02yY2iCh5ELBHrQ=="
                 }
             );
 
@@ -160,10 +160,3 @@ namespace StudentProgressTracker.Data
 
     }
 }
-
-
-//alice @domain.com User1@123
-//bob@domain.com	User2@123
-//charlie@domain.com	User3@123
-//diana@domain.com	User4@123
-//evan@domain.com	User5@123
